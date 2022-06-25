@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="echarts.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>漏斗图</title>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px"></div>
+    <script type="text/javascript">
+        var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+
+option = {
+  title: {
+    text: '每十万人受教育情况'
+  },
+  tooltip: {
+    trigger: 'item',
+    formatter: '{a} <br/>{b} : {c}人'
+  },
+  toolbox: {
+    feature: {
+      dataView: { readOnly: false },
+      restore: {},
+      saveAsImage: {}
+    }
+  },
+  legend: {
+    data: ['文盲', '受小学及以上教育', '受初中及以上教育', '受高中及以上教育', '受大专及以上教育']
+  },
+  series: [
+    {
+      name: '人数',
+      type: 'funnel',
+      left: '10%',
+      top: 60,
+      bottom: 60,
+      width: '80%',
+      min: 0,
+      max: 100000,
+      minSize: '0%',
+      maxSize: '100%',
+      sort: 'descending',
+      gap: 2,
+      label: {
+        show: true,
+        position: 'inside'
+      },
+      labelLine: {
+        length: 10,
+        lineStyle: {
+          width: 1,
+          type: 'solid'
+        }
+      },
+      itemStyle: {
+        borderColor: '#fff',
+        borderWidth: 1
+      },
+      emphasis: {
+        label: {
+          fontSize: 20
+        }
+      },
+      data: [
+        { value: 3775, name: '文盲' },
+        { value: 15467, name: '受大专及以上教育' },
+        { value: 30555, name: '受高中及以上教育' },
+        { value: 65062, name: '受初中及以上教育' },
+        { value: 89829, name: '受小学及以上教育' }
+      ]
+    }
+  ]
+};
+        myChart.setOption(option);
+    </script>
+</body>
+<ml>

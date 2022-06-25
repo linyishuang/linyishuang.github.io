@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="echarts.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雷达图</title>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px"></div>
+    <script type="text/javascript">
+        var chartDom = document.getElementById('main');
+var myChart = echarts.init(chartDom);
+var option;
+
+option = {
+    tooltip: {  //配置详情提示框组件
+				//设置雷达图的tooltip不会超出div，也可设置position属性
+				//设置定位不会随着鼠标移动而变化
+				confine: true,  //设置是否将tooltip框限制在图表的区域内
+				enterable: true,  //设置鼠标是否可以移动到tooltip区域内
+			},
+  title: {
+    text: '近三年各产业产值',
+    subtext: '单位/亿元'
+  },
+  legend: {
+    data: ['2021', '2020','2019']
+  },
+  radar: {
+    // shape: 'circle',
+    indicator: [
+      { name: '第一产业', max: 1000000 },
+      { name: '第二产业', max: 1000000 },
+      { name: '第三产业', max: 1000000 }
+    ]
+  },
+  series: [
+    {
+      name: 'Budget vs spending',
+      type: 'radar',
+      data: [
+        {
+          value: [83085.5, 450904.5, 609679.7],
+          name: '2021'
+        },
+        {
+          value: [78030.9, 383562.4, 551973.7],
+          name: '2020'
+        },
+        {
+          value: [70473.6, 380670.6, 535371.0],
+          name: '2019'
+        }
+      ]
+    }
+  ]
+};
+        myChart.setOption(option);
+    </script>
+</body>
+<ml>
